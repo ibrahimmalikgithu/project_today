@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        /* NAVBAR START */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Header section */
+        header {
+            width: 100%;
+            max-width: 100%;
+            padding-left: 100px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 1000;
+        }
+
+        header nav a {
+            color: #fff;
+            margin-right: 5px;
+            padding: 5px 10px;
+            font-size: 16px;
+            transition: 0.2s;
+            text-decoration: none;
+        }
+
+        a.active {
+            background: #0b8000;
+            border-radius: 2px;
+        }
+
+        #tagd-1 {
+            font-size: 23px !important;
+            font-weight: bold !important;
+            margin-top: 15px !important;
+        }
+
+        #tagd-1:hover {
+            background: #0b8000;
+            border-radius: 2px;
+        }
+
+        .log-nav {
+            border-radius: 2px;
+            margin-left: 1150px;
+            font-size: 21px !important;
+            font-weight: bold !important;
+            margin-top: 15px !important;
+        }
+
+        .log-nav:hover {
+            background-color: #0b8000;
+            border-radius: 2px;
+
+        }
+
+        .nav-1 {
+            margin-top: 15px !important;
+        }
+
+        /* Header section */
+        /* carousel */
+        .carousel {
+            width: 100vw;
+            height: 100vh;
+            margin-top: -50px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .item {
+            width: 180px;
+            height: 250px;
+            position: absolute;
+            top: 80%;
+            transform: translateY(-70%);
+            left: 70%;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            background-position: 50% 50%;
+            background-size: cover;
+            z-index: 100;
+            transition: 1s;
+        }
+
+        .carousel .list .item:nth-child(1),
+        .carousel .list .item:nth-child(2) {
+            top: 0;
+            left: 0;
+            transform: translate(0, 0);
+            border-radius: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .carousel .list .item:nth-child(3) {
+            left: 67%;
+        }
+
+        .carousel .list .item:nth-child(4) {
+            left: calc(67% + 200px);
+        }
+
+        .carousel .list .item:nth-child(5) {
+            left: calc(67% + 400px);
+        }
+
+        .carousel .list .item:nth-child(6) {
+            left: calc(67% + 600px);
+        }
+
+        .carousel .list .item:nth-child(n+7) {
+            left: calc(67% + 800px);
+            opacity: 0;
+        }
+
+        .list .item .content {
+            position: absolute;
+            top: 50%;
+            left: 100px;
+            transform: translateY(-50%);
+            width: 400px;
+            text-align: left;
+            color: #fff;
+            display: none;
+        }
+
+        .list .item:nth-child(2) .content {
+            display: block;
+        }
+
+        .content .title {
+            font-size: 100px;
+            text-transform: uppercase;
+            color: #0b8000;
+            font-weight: bold;
+            line-height: 1;
+
+            opacity: 0;
+            animation: animate 1s ease-in-out 0.3s 1 forwards;
+        }
+
+        .content .name {
+            font-size: 100px;
+            text-transform: uppercase;
+            font-weight: bold;
+            line-height: 1;
+            text-shadow: 3px 4px 4px rgba(255, 255, 255, 0.8);
+
+            opacity: 0;
+            animation: animate 1s ease-in-out 0.6s 1 forwards;
+        }
+
+        .content .des {
+            margin-top: 10px;
+            margin-bottom: 20px;
+            font-size: 18px;
+            margin-left: 5px;
+            opacity: 0;
+            animation: animate 1s ease-in-out 0.9s 1 forwards;
+        }
+
+        .content .btn {
+            margin-left: 5px;
+            opacity: 0;
+            animation: animate 1s ease-in-out 1.2s 1 forwards;
+        }
+
+        .content .btn button {
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border: 2px solid #fff;
+        }
+
+        .content .btn button:nth-child(1) {
+            margin-right: 15px;
+            background: green;
+            color: white;
+            transition: 0.3s;
+            font-weight: bold;
+            font-size: 18px;
+            border-radius: 10px;
+        }
+
+        .content .btn button:nth-child(2) {
+            background: green;
+            color: white;
+            transition: 0.3s;
+            font-weight: bold;
+            font-size: 18px;
+            border-radius: 10px;
+        }
+
+        .content .btn button:nth-child(1):hover {
+            background-color: #0b8000;
+            color: #fff;
+            border-color: #0b8000;
+        }
+
+        .content .btn button:nth-child(2):hover {
+            background-color: #0b8000;
+            color: #fff;
+            border-color: #0b8000;
+        }
+
+        @keyframes animate {
+
+            from {
+                opacity: 0;
+                transform: translate(0, 100px);
+                filter: blur(33px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translate(0);
+                filter: blur(0);
+            }
+        }
+
+        /* Carousel */
+        /* next prev arrows */
+
+        .arrows {
+            position: absolute;
+            top: 80%;
+            right: 52%;
+            z-index: 100;
+            width: 300px;
+            max-width: 30%;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .arrows button {
+            overflow: hidden;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #0b8000;
+            color: #fff;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            font-family: monospace;
+            font-weight: bold;
+            transition: .5s;
+            cursor: pointer;
+        }
+
+        .arrows button:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        .carousel .timeRunning {
+            position: absolute;
+            z-index: 1000;
+            width: 0%;
+            height: 4px;
+            background-color: #0b8000;
+            left: 0;
+            top: 0;
+            animation: runningTime 7s linear 1 forwards;
+        }
+
+        @keyframes runningTime {
+
+            from {
+                width: 0%;
+            }
+
+            to {
+                width: 100%;
+            }
+
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 999px) {
+
+            header {
+                padding-left: 50px;
+            }
+
+            .list .item .content {
+                left: 50px;
+            }
+
+            .content .title,
+            .content .name {
+                font-size: 70px;
+            }
+
+            .content .des {
+                font-size: 16px;
+            }
+
+        }
+
+        @media screen and (max-width: 690px) {
+            header nav a {
+                font-size: 14px;
+                margin-right: 0;
+            }
+
+            .list .item .content {
+                top: 40%;
+            }
+
+            .content .title,
+            .content .name {
+                font-size: 45px;
+            }
+
+            .content .btn button {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+        }
+
+        /* NAVBAR END */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: poppins;
+            font-size: 16px;
+            color: #fff;
+        }
+
+        .form-box {
+            background-color: rgba(0, 0, 0, 0.5);
+            margin: auto auto;
+            padding: 40px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px #000;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 500px;
+            height: 430px;
+        }
+
+        .form-box:before {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            content: "";
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            z-index: -1;
+            display: block;
+            filter: blur(2px);
+        }
+
+        .form-box .header-text {
+            font-size: 32px;
+            font-weight: 600;
+            padding-bottom: 30px;
+            text-align: center;
+        }
+
+        .form-box input {
+            margin: 10px 0px;
+            border: none;
+            padding: 10px;
+            border-radius: 10px;
+            width: 100%;
+            font-size: 18px;
+            font-family: poppins;
+        }
+
+        .form-box input[type="checkbox"] {
+            display: none;
+        }
+
+        .form-box label {
+            position: relative;
+            margin-left: 5px;
+            margin-right: 10px;
+            top: 5px;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .form-box label:before {
+            content: "";
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 5px;
+            position: absolute;
+            left: 0;
+            bottom: 1px;
+            background-color: #ddd;
+        }
+
+        .form-box input[type="checkbox"]:checked+label:before {
+            content: "\2713";
+            font-size: 20px;
+            color: #000;
+            text-align: center;
+            line-height: 20px;
+        }
+
+        .form-box span {
+            font-size: 14px;
+        }
+
+        .form-box button {
+            background-color: rgb(143, 3, 3);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+            padding: 10px;
+            margin: 20px 0px;
+        }
+
+        span a {
+            color: #bbb;
+        }
+
+
+        .BTN-FORM:hover {
+            background-color: rgb(65, 0, 0);
+            transition: 0.6s
+        }
+
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        body {
+            line-height: 1.5;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 1170px;
+            margin: auto;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .footer {
+            background-color: rgb(8, 8, 8);
+            padding: 70px 0;
+        }
+
+        .footer-col {
+            width: 25%;
+            padding: 0 15px;
+        }
+
+        .footer-col h4 {
+            font-size: 18px;
+            color: #ffffff;
+            text-transform: capitalize;
+            margin-bottom: 35px;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .footer-col h4::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            background-color: #eef7eef8;
+            height: 2px;
+            box-sizing: border-box;
+            width: 50px;
+        }
+
+        .footer-col ul li:not(:last-child) {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            font-size: 16px;
+            text-transform: capitalize;
+            color: #0b8000;
+            text-decoration: none;
+            font-weight: 300;
+            color: #bbbbbb;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .footer-col ul li a:hover {
+            color: #0b8000;
+            padding-left: 8px;
+        }
+
+        .footer-col .social-links a {
+            display: inline-block;
+            height: 40px;
+            width: 40px;
+            background-color: rgba(255, 255, 255, 0.2);
+            margin: 0 10px 10px 0;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            color: #ffffff;
+            transition: all 0.5s ease;
+        }
+
+        .footer-col .social-links a:hover {
+            color: #24262b;
+            background-color:#0b8000;
+        }
+
+        /*responsive*/
+        @media(max-width: 767px) {
+            .footer-col {
+                width: 50%;
+                margin-bottom: 30px;
+            }
+        }
+
+        @media(max-width: 574px) {
+            .footer-col {
+                width: 100%;
+            }
+        }
+    </style>
+
+    </style>
+    <meta charset="UTF-8">
+    <title>Transparent Login Form HTML CSS</title>
+    <link href="style.css" rel="stylesheet">
+
+
+    </script>
+</head>
+
+<body class="MAIN_FORM">
+    <video autoplay loop muted plays-inline>
+        <source src="Images/login.mp4" type="video/mp4">
+    </video>
+    </video>
+
+    <div class="form-box">
+        <div class="header-text">
+            LOGIN HERE
+        </div>
+        <input placeholder="Enter Username" type="text" name="username">
+        <input placeholder="Your Email Address" type="text" name="email">
+        <input placeholder="your phone number" name="phone" type="number">
+        <input placeholder="Your Password" name="password" type="password">
+        <input type="text" placeholder="Your region" name="region">
+
+        <input id="terms" type="checkbox"> <label for="terms">
+        </label><span>Agree with <a href="#">Terms & Conditions</a></span>
+        <button class="BTN-FORM">Login</button>
+    </div>
+    <!-- footer START -->
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>company</h4>
+                    <ul>
+                        <li><a href="Index(Home).html">Home</a></li>
+                        <li><a href="books.html">Book</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="Signin.html">Sign in</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>get help</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">shipping</a></li>
+                        <li><a href="#">returns</a></li>
+                        <li><a href="#">order status</a></li>
+                        <li><a href="#">payment options</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>online shop</h4>
+                    <ul>
+                        <li><a href="#">Bible</a></li>
+                        <li><a href="#">Holy Quran</a></li>
+                        <li><a href="#">Rig Veda</a></li>
+                        <li><a href="#">Tripitaka</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>follow us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FOOTER END -->
+
+</body>
+
+</html>

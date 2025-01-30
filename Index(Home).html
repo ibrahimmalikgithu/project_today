@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* NAVBAR START */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Header section */
+        header {
+            width: 100%;
+            max-width: 100%;
+            padding-left: 100px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 1000;
+        }
+
+        header nav a {
+            color: #fff;
+            margin-right: 5px;
+            padding: 5px 10px;
+            font-size: 16px;
+            transition: 0.2s;
+            text-decoration: none;
+        }
+
+        a.active {
+            background: #0b8000;
+            border-radius: 2px;
+        }
+
+        #tagd-1 {
+            font-size: 23px !important;
+            font-weight: bold !important;
+            margin-top: 15px !important;
+        }
+
+        #tagd-1:hover {
+            background: #0b8000;
+            border-radius: 2px;
+        }
+
+        .log-nav {
+            border-radius: 2px;
+            margin-left: 1050px;
+            font-size: 21px !important;
+            font-weight: bold !important;
+            margin-top: 15px !important;
+        }
+
+        .log-nav:hover {
+            background-color: #0b8000;
+            border-radius: 2px;
+
+        }
+
+        .nav-1 {
+            margin-top: 15px !important;
+        }
+
+        /* Header section */
+        /* carousel */
+        .carousel {
+            width: 100vw;
+            height: 100vh;
+            margin-top: -50px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .item {
+            width: 180px;
+            height: 250px;
+            position: absolute;
+            top: 80%;
+            transform: translateY(-70%);
+            left: 70%;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            background-position: 50% 50%;
+            background-size: cover;
+            z-index: 100;
+            transition: 1s;
+        }
+
+        .carousel .list .item:nth-child(1),
+        .carousel .list .item:nth-child(2) {
+            top: 0;
+            left: 0;
+            transform: translate(0, 0);
+            border-radius: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .carousel .list .item:nth-child(3) {
+            left: 67%;
+        }
+
+        .carousel .list .item:nth-child(4) {
+            left: calc(67% + 200px);
+        }
+
+        .carousel .list .item:nth-child(5) {
+            left: calc(67% + 400px);
+        }
+
+        .carousel .list .item:nth-child(6) {
+            left: calc(67% + 600px);
+        }
+
+        .carousel .list .item:nth-child(n+7) {
+            left: calc(67% + 800px);
+            opacity: 0;
+        }
+
+        .list .item .content {
+            position: absolute;
+            top: 50%;
+            left: 100px;
+            transform: translateY(-50%);
+            width: 400px;
+            text-align: left;
+            color: #fff;
+            display: none;
+        }
+
+        .list .item:nth-child(2) .content {
+            display: block;
+        }
+
+        .content .title {
+            font-size: 100px;
+            text-transform: uppercase;
+            color: #0b8000;
+            font-weight: bold;
+            line-height: 1;
+
+            opacity: 0;
+            animation: animate 1s ease-in-out 0.3s 1 forwards;
+        }
+
+        .content .name {
+            font-size: 100px;
+            text-transform: uppercase;
+            font-weight: bold;
+            line-height: 1;
+            text-shadow: 3px 4px 4px rgba(255, 255, 255, 0.8);
+
+            opacity: 0;
+            animation: animate 1s ease-in-out 0.6s 1 forwards;
+        }
+
+        .content .des {
+            margin-top: 10px;
+            margin-bottom: 20px;
+            font-size: 18px;
+            margin-left: 5px;
+            opacity: 0;
+            animation: animate 1s ease-in-out 0.9s 1 forwards;
+        }
+
+        .content .btn {
+            margin-left: 5px;
+            opacity: 0;
+            animation: animate 1s ease-in-out 1.2s 1 forwards;
+        }
+
+        .content .btn button {
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border: 2px solid #fff;
+        }
+
+        .content .btn button:nth-child(1) {
+            margin-right: 15px;
+            background: green;
+            color: white;
+            transition: 0.3s;
+            font-weight: bold;
+            font-size: 18px;
+            border-radius: 10px;
+        }
+
+        .content .btn button:nth-child(2) {
+            background: green;
+            color: white;
+            transition: 0.3s;
+            font-weight: bold;
+            font-size: 18px;
+            border-radius: 10px;
+        }
+
+        .content .btn button:nth-child(1):hover {
+            background-color: #0b8000;
+            color: #fff;
+            border-color: #0b8000;
+        }
+
+        .content .btn button:nth-child(2):hover {
+            background-color: #0b8000;
+            color: #fff;
+            border-color: #0b8000;
+        }
+
+        @keyframes animate {
+
+            from {
+                opacity: 0;
+                transform: translate(0, 100px);
+                filter: blur(33px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translate(0);
+                filter: blur(0);
+            }
+        }
+
+        /* Carousel */
+        /* next prev arrows */
+
+        .arrows {
+            position: absolute;
+            top: 80%;
+            right: 52%;
+            z-index: 100;
+            width: 300px;
+            max-width: 30%;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .arrows button {
+            overflow: hidden;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #0b8000;
+            color: #fff;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            font-family: monospace;
+            font-weight: bold;
+            transition: .5s;
+            cursor: pointer;
+        }
+
+        .arrows button:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        .carousel .timeRunning {
+            position: absolute;
+            z-index: 1000;
+            width: 0%;
+            height: 4px;
+            background-color: #0b8000;
+            left: 0;
+            top: 0;
+            animation: runningTime 7s linear 1 forwards;
+        }
+
+        @keyframes runningTime {
+
+            from {
+                width: 0%;
+            }
+
+            to {
+                width: 100%;
+            }
+
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 999px) {
+
+            header {
+                padding-left: 50px;
+            }
+
+            .list .item .content {
+                left: 50px;
+            }
+
+            .content .title,
+            .content .name {
+                font-size: 70px;
+            }
+
+            .content .des {
+                font-size: 16px;
+            }
+
+        }
+
+        @media screen and (max-width: 690px) {
+            header nav a {
+                font-size: 14px;
+                margin-right: 0;
+            }
+
+            .list .item .content {
+                top: 40%;
+            }
+
+            .content .title,
+            .content .name {
+                font-size: 45px;
+            }
+
+            .content .btn button {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+        }
+
+        /* NAVBAR END */
+        /* CARDS START */
+        .Heading-11 {
+            border-bottom: #0b8000 solid 12px;
+            margin-left: 800px;
+            margin-right: 800px;
+            font-size: 45px !important;
+            text-transform: uppercase;
+            font-weight: bold;
+            line-height: 1;
+            text-align: center;
+            opacity: 0;
+            margin-top: 30px !important;
+            margin-bottom: 60px !important;
+            animation: animate 1s ease-in-out 0.3s 1 forwards;
+        }
+
+        .festival-cards {
+            margin-top: 30px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .festival-cards h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .festival-cards .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 0 20px;
+        }
+
+        .festival-cards .card {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .festival-cards .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .festival-cards .card-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px !important;
+        }
+
+        .festival-cards .card-image img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .festival-cards .hover-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .festival-cards .card:hover .hover-overlay {
+            opacity: 1;
+        }
+
+        .festival-cards .hover-overlay button {
+            background-color: #0b8000;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .festival-cards .hover-overlay button:hover {
+            background-color: #064400;
+            color: #fff;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .festival-cards .card-content {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .festival-cards .card-content p {
+            margin: 0;
+            color: #555;
+        }
+
+        /* CARDS END */
+        /* Sales section Start */
+        .ticket-sales-section {
+            background: linear-gradient(to bottom, #580000, #580000);
+            color: white;
+            padding-top: 50px;
+            padding-bottom: 50px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 80px;
+            margin-top: 80px;
+        }
+
+        .content {
+            text-align: center;
+            float: right;
+            margin-right: 150px;
+            width: fit-content;
+            height: fit-content;
+            margin-top: 30px;
+        }
+
+        .image-sales {
+            float: left;
+            width: fit-content;
+            height: fit-content;
+            margin-left: 150px;
+            border-radius: 20px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .image-sales:hover {
+            transform: scale(1.1);
+        }
+
+        .Heading-13 {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-out;
+        }
+
+        .tagline {
+            font-size: 1.5em;
+            margin-bottom: 25px;
+            font-style: italic;
+            animation: fadeIn 2s ease-out 0.5s;
+        }
+
+        .ticket-details {
+            margin-bottom: 30px;
+            font-size: 1em;
+            animation: fadeIn 2s ease-out 1s;
+        }
+
+        .buy-tickets-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            text-align: center;
+            background: green;
+            color: white;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            font-size: 1.2em;
+            text-decoration: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            animation: fadeIn 2s ease-out 1.5s;
+        }
+
+        .buy-tickets-btn:hover {
+            background-color: #0b8000;
+            color: #fff;
+            border-color: #0b8000;
+        }
+
+        .snowflakes {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .snowflake {
+            font-size: 3em;
+            animation: fall 5s linear infinite;
+            opacity: 0.8;
+        }
+
+        .snowflake:nth-child(1) {
+            animation-delay: 0s;
+            left: 20%;
+        }
+
+        .snowflake:nth-child(2) {
+            animation-delay: 2s;
+            left: 40%;
+        }
+
+        .snowflake:nth-child(3) {
+            animation-delay: 4s;
+            left: 60%;
+        }
+
+        .snowflake:nth-child(4) {
+            animation-delay: 1s;
+            left: 80%;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fall {
+            from {
+                transform: translateY(-10%);
+            }
+
+            to {
+                transform: translateY(100%);
+            }
+        }
+
+        /* Sales SECtion End */
+        /* CARDS 2 START */
+        .Heading-12 {
+            border-bottom: #0b8000 solid 12px;
+            margin-left: 600px;
+            margin-right: 600px;
+            font-size: 45px !important;
+            text-transform: uppercase;
+            font-weight: bold;
+            line-height: 1;
+            text-align: center;
+            opacity: 0;
+            margin-top: 10px !important;
+            margin-bottom: 60px !important;
+            animation: animate 1s ease-in-out 0.3s 1 forwards;
+        }
+
+        .para--1 {
+            color: #000 !important;
+            font-size: medium !important;
+        }
+
+        .religious-books {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .religious-books .card-image img {
+            border-radius: 10px !important;
+        }
+
+        .religious-books h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .religious-books .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 0 20px;
+        }
+
+        .religious-books .card {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .religious-books .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .religious-books .card-image img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .religious-books .card-content {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .religious-books .card-content p {
+            margin: 10px 0;
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        .religious-books .card-content button {
+            background-color: #0b8000;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .religious-books .card-content button:hover {
+            background-color: #064400;
+            color: #fff;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        /* CARDS 2 END */
+        /* sales section 2 START */
+        .ticket-sales-section {
+            background: linear-gradient(to bottom, #580000, #580000);
+            color: white;
+            padding-top: 50px;
+            padding-bottom: 50px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 80px;
+            margin-top: 80px;
+        }
+
+        .content {
+            text-align: center;
+            float: right;
+            margin-right: 200px;
+            width: fit-content;
+            height: fit-content;
+            margin-top: 65px;
+        }
+
+        .image-sales {
+            width: 600px;
+            float: left;
+            height: 500px;
+            margin-left: 150px;
+            border-radius: 20px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .image-sales:hover {
+            transform: scale(1.1);
+        }
+
+        .Heading-13 {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-out;
+        }
+
+        .tagline {
+            font-size: 1.5em;
+            margin-bottom: 25px;
+            font-style: italic;
+            animation: fadeIn 2s ease-out 0.5s;
+        }
+
+        .ticket-details {
+            margin-bottom: 30px;
+            font-size: 1em;
+            animation: fadeIn 2s ease-out 1s;
+        }
+
+        .price {
+            font-size: larger;
+        }
+
+        .buy-tickets-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            text-align: center;
+            background: green;
+            color: white;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            font-size: 1.2em;
+            text-decoration: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            animation: fadeIn 2s ease-out 1.5s;
+        }
+
+        .buy-tickets-btn:hover {
+            background-color: #0b8000;
+            color: #fff;
+            border-color: #0b8000;
+        }
+
+        .snowflakes {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .snowflake {
+            font-size: 3em;
+            animation: fall 5s linear infinite;
+            opacity: 0.8;
+        }
+
+        .snowflake:nth-child(1) {
+            animation-delay: 0s;
+            left: 20%;
+        }
+
+        .snowflake:nth-child(2) {
+            animation-delay: 2s;
+            left: 40%;
+        }
+
+        .snowflake:nth-child(3) {
+            animation-delay: 4s;
+            left: 60%;
+        }
+
+        .snowflake:nth-child(4) {
+            animation-delay: 1s;
+            left: 80%;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fall {
+            from {
+                transform: translateY(-10%);
+            }
+
+            to {
+                transform: translateY(100%);
+            }
+        }
+
+        /* SALES SECTION 2 END */
+        /* FOOTER START */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        .MAIN_FORM {
+            line-height: 1.5;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container-2 {
+            max-width: 1170px;
+            margin: auto;
+        }
+
+        .row-2 {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .footer {
+            background-color: rgb(10, 10, 10);
+            padding: 70px 0;
+        }
+
+        .footer-col {
+            width: 25%;
+            padding: 0 15px;
+        }
+
+        .footer-col h4 {
+            font-size: 18px;
+            color: #ffffff;
+            text-transform: capitalize;
+            margin-bottom: 35px;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .footer-col h4::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            background-color: #eef7eef8;
+            height: 2px;
+            box-sizing: border-box;
+            width: 50px;
+        }
+
+        .footer-col ul li:not(:last-child) {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            font-size: 16px;
+            text-transform: capitalize;
+            color: #0b8000;
+            text-decoration: none;
+            font-weight: 300;
+            color: #bbbbbb;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .footer-col ul li a:hover {
+            color: #0b8000;
+            padding-left: 8px;
+        }
+
+        .footer-col .social-links a {
+            display: inline-block;
+            height: 40px;
+            width: 40px;
+            background-color: rgba(0, 13, 83, 0.185);
+            margin: 0 10px 10px 0;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            color: #ffffff;
+            transition: all 0.5s ease;
+        }
+
+        .footer-col .social-links a:hover {
+            color: #24262b;
+            background-color: #0b8000;
+        }
+
+        /*responsive*/
+        @media(max-width: 767px) {
+            .footer-col {
+                width: 50%;
+                margin-bottom: 30px;
+            }
+        }
+
+        @media(max-width: 574px) {
+            .footer-col {
+                width: 100%;
+            }
+        }
+
+        /* FOOTER END */
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="nav-1">
+            <a id="tagd-1" href="" class="active">Home</a>
+            <a id="tagd-1" href="books.html">Books</a>
+            <a id="tagd-1" href="">About</a>
+            <a id="tagd-1" href="">Contact</a>
+            <a id="tagd-1" href="">Gallery</a>
+            <a class="log-nav" href="login.html">login</a>
+            <a id="tagd-1" href="Signin.html">Sign In </a>
+        </nav>
+    </header>
+    <div class="carousel">
+        <div class="list">
+            <!-- Festival 1: Eid al-Fitr (Islam) -->
+            <div class="item" style="background-image: url('Images/Banner/banner1.jpg');">
+                <div class="content">
+                    <div class="title">EID-UL-ADHA</div>
+                    <div class="name">Islamic Festival</div>
+                    <div class="des">Eid al-Fitr is a significant Islamic festival that marks the end of Ramadan, the
+                        month of fasting. It is a day of joy, gratitude, and celebration with family and friends.</div>
+                    <div class="btn">
+                        <button>Learn More</button>
+                        <button>Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Festival 2: Christmas (Christianity) -->
+            <div class="item" style="background-image: url('Images/Banner/banner2.jpg');">
+                <div class="content">
+                    <div class="title">CHRISTMAS</div>
+                    <div class="name">Christian Festival</div>
+                    <div class="des">Christmas celebrates the birth of Jesus Christ and is a time for love, sharing, and
+                        spreading goodwill. It is marked by festive decorations, family gatherings, and exchanging
+                        gifts.</div>
+                    <div class="btn">
+                        <button>Learn More</button>
+                        <button>Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Festival 3: Vesak (Buddhism) -->
+            <div class="item" style="background-image: url('Images/Banner/banner3.jpg');">
+                <div class="content">
+                    <div class="title">VESAK</div>
+                    <div class="name">Buddhist Festival</div>
+                    <div class="des">Vesak celebrates the birth, enlightenment, and death of the Buddha. It is a time
+                        for Buddhists to reflect on the teachings of the Buddha and engage in acts of kindness and
+                        charity.</div>
+                    <div class="btn">
+                        <button>Learn More</button>
+                        <button>Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Festival 4: Diwali (Hinduism) -->
+            <div class="item" style="background-image: url('Images/Banner/banner4.jpeg');">
+                <div class="content">
+                    <div class="title">DIWALI</div>
+                    <div class="name">Hindu Festival</div>
+                    <div class="des">Diwali, also known as the Festival of Lights, is celebrated by Hindus to mark the
+                        victory of light over darkness and good over evil. It involves lighting lamps, feasting, and
+                        spending time with family.</div>
+                    <div class="btn">
+                        <button>Learn More</button>
+                        <button>Subscribe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Next/Previous Buttons -->
+        <div class="arrows">
+            <button class="prev">&lt;&lt;</button>
+            <button class="next">&gt;</button>
+        </div>
+        <!-- Time Running Indicator -->
+        <div class="timeRunning"></div>
+    </div>
+    <!-- CARDS START -->
+    <section class="festival-cards">
+        <h2 class="Heading-11">"FESTIVALS"</h2>
+        <div class="card-container">
+            <!-- Card 1 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="Images/festivals/Card-1.webp" alt="Festival 1">
+                    <div class="hover-overlay">
+                        <button>Learn More</button>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <p class="para--1"><strong>Diwali:</strong> The festival of lights spreading joy and love.</p>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="Images/festivals/card-2.webp" alt="Festival 2">
+                    <div class="hover-overlay">
+                        <button>Learn More</button>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <p class="para--1"><strong>Eid:</strong> A celebration of togetherness and compassion.</p>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="Images/festivals/card-3.webp" alt="Festival 3">
+                    <div class="hover-overlay">
+                        <button>Learn More</button>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <p class="para--1"><strong>Christmas:</strong> Sharing love and kindness across the world.</p>
+                </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="Images/festivals/card-4.jpg" alt="Festival 4">
+                    <div class="hover-overlay">
+                        <button>Learn More</button>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <p class="para--1"><strong>Holi:</strong> Spreading colors of happiness and unity.</p>
+                </div>
+            </div>
+            <!-- Card 5 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="Images/festivals/card-5.webp" alt="Festival 1">
+                    <div class="hover-overlay">
+                        <button>Learn More</button>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <p class="para--1"><strong>Ramadan:</strong> The festival of fasting spreading Joy and love.</p>
+                </div>
+            </div>
+            <!-- Card 6 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="Images/festivals/card-6.jpg" alt="Festival 2">
+                    <div class="hover-overlay">
+                        <button>Learn More</button>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <p class="para--1"><strong>Good-Friday:</strong>is a solemn day observed by Christians.</p>
+                </div>
+            </div>
+            <!-- Card 7 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="Images/festivals/card-7.jpg" alt="Festival 3">
+                    <div class="hover-overlay">
+                        <button>Learn More</button>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <p class="para--1"><strong>Kamhina:</strong>Kamhina is a significant Buddhist festival</p>
+                </div>
+            </div>
+            <!-- Card 8 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="Images/festivals/card-8.jpg" alt="Festival 4">
+                    <div class="hover-overlay">
+                        <button>Learn More</button>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <p class="para--1"><strong>Magha Puja:</strong>is an Buddhist celebration on the full moon</p>
+                </div>
+            </div>
+            <!-- Card 9 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="Images/festivals/card-9.jpg" alt="Festival 4">
+                    <div class="hover-overlay">
+                        <button>Learn More</button>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <p class="para--1"><strong>rosh hashanah:</strong>Rosh Hashanah is the Jewish New Year.</p>
+                </div>
+            </div>
+            <!-- Card 10 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="Images/festivals/card-10.webp" alt="Festival 4">
+                    <div class="hover-overlay">
+                        <button>Learn More</button>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <p class="para--1"><strong>Yom Kippur:</strong>Yom Kippur, known as the Day of Atonement.</p>
+                </div>
+            </div>
+            <!-- Card 11 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="Images/festivals/card-11.jpg" alt="Festival 4">
+                    <div class="hover-overlay">
+                        <button>Learn More</button>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <p class="para--1"><strong>Confucius's Birthday</strong>This day honors the life of Confucius.</p>
+                </div>
+            </div>
+            <!-- Card 12 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="Images/Festivals/card-12.jpg" alt="Festival 4">
+                    <div class="hover-overlay">
+                        <button>Learn More</button>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <p class="para--1"><strong>Qing Ming:</strong>Qingming also known as the Tomb Sweeping</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CARDS END -->
+    <!-- SALES SECTION START-->
+    <section class="ticket-sales-section">
+        <img src="Images/sales1.avif" class="image-sales">
+        <div class="content">
+            <h1 class="Heading-13">Get Your Christmas Festival Tickets Now!</h1>
+            <p class="tagline">Join us for the most magical time of the year!</p>
+            <div class="ticket-details">
+                <p><strong>Date: December 25, 2024</strong></p>
+                <p>Location: Winter Wonderland Park</p>
+                <p>Price: $50 per ticket</p>
+            </div>
+            <a href="#" class="buy-tickets-btn">Buy Tickets</a>
+        </div>
+        <div class="snowflakes">
+            <div class="snowflake">D</div>
+            <div class="snowflake">D</div>
+            <div class="snowflake">D</div>
+            <div class="snowflake">D</div>
+        </div>
+    </section>
+    <!-- SALES SECTION END -->
+    <!-- CARDS ROW 2 START -->
+    <section class="religious-books">
+        <h2 class="Heading-12">"Explore Religious Books"</h2>
+        <div class="card-container">
+            <!-- Card 1 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="Images/card-5.jpg" alt="Holy Quran">
+                </div>
+                <div class="card-content">
+                    <p class="para--1"><strong>Holy Quran:</strong> A guide to spirituality and peace.</p>
+                    <button class="btn-book">BUY NOW</button>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="Images/card-6.jpg" alt="Bible">
+                </div>
+                <div class="card-content">
+                    <p class="para--1"><strong>Bible:</strong> Words of wisdom and love for humanity.</p>
+                    <button class="btn-book">BUY NOW</button>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="Images/card-7.jfif" alt="Bhagavad Gita">
+                </div>
+                <div class="card-content">
+                    <p class="para--1"><strong>Bhagavad Gita:</strong> The essence of life's teachings.</p>
+                    <button class="btn-book">BUY NOW</button>
+                </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="Images/card-8.jpg" alt="Torah">
+                </div>
+                <div class="card-content">
+                    <p class="para--1"><strong>Torah:</strong> A profound journey of faith and laws.</p>
+                    <button class="btn-book">BUY NOW</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CARDS ROW 2 END  -->
+    <!-- SALES SECTION 2 STRAT -->
+    <section class="ticket-sales-section">
+        <img src="Images/card-5.jpg" class="image-sales">
+        <div class="content">
+            <h1 class="Heading-13">BUY NOW!</h1>
+            <p class="tagline">The Divine Guide to Peace and Wisdom.</p>
+            <div class="ticket-details">
+                <p>Discover the timeless wisdom and beauty of the Holy Quran. We offer high-quality,<br>
+                    beautifully printed editions, perfect for study, reflection, or as a cherished gift.</p>
+                <p class="price"><strong>$25.55</strong></p>
+            </div>
+            <a href="#" class="buy-tickets-btn">Buy NOW</a>
+        </div>
+        <div class="snowflakes">
+            <div class="snowflake">D</div>
+            <div class="snowflake">D</div>
+            <div class="snowflake">D</div>
+            <div class="snowflake">D</div>
+        </div>
+    </section>
+    <!-- SALES SECTUIN 2 END -->
+    <!-- footer strat -->
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <footer class="footer">
+        <div class="container container-2">
+            <div class="row row-2">
+                <div class="footer-col">
+                    <h4>company</h4>
+                    <ul>
+                        <li><a href="Index(Home).html">Home</a></li>
+                        <li><a href="books.html">Book</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="Signin.html">Sign up</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>get help</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">shipping</a></li>
+                        <li><a href="#">returns</a></li>
+                        <li><a href="#">order status</a></li>
+                        <li><a href="#">payment options</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>online shop</h4>
+                    <ul>
+                        <li><a href="#">Bible</a></li>
+                        <li><a href="#">Holy Quran</a></li>
+                        <li><a href="#">Rig Veda</a></li>
+                        <li><a href="#">Tripitaka</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>follow us</h4>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.threads.net/login."><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://pk.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // Select elements once and reuse the references
+            const nextBtn = document.querySelector('.next'),
+                prevBtn = document.querySelector('.prev'),
+                carousel = document.querySelector('.carousel'),
+                list = document.querySelector('.list'),
+                items = document.querySelectorAll('.item'),
+                runningTime = document.querySelector('.carousel .timeRunning');
+
+            let timeRunning = 3000; // time per slide
+            let timeAutoNext = 7000; // time between auto transitions
+
+            let runTimeOut;  // Variable to store timeout for transition timing
+            let runNextAuto = setTimeout(() => nextBtn.click(), timeAutoNext);  // Auto slide timeout
+
+            // Function to reset the animation
+            function resetTimeAnimation() {
+                runningTime.style.animation = 'none';
+                runningTime.offsetHeight;  // Trigger reflow to reset animation
+                runningTime.style.animation = null;
+                runningTime.style.animation = 'runningTime 7s linear 1 forwards';
+            }
+
+            // Function to show slider transition
+            function showSlider(type) {
+                const sliderItemsDom = list.querySelectorAll('.carousel .list .item');
+
+                if (type === 'next') {
+                    list.appendChild(sliderItemsDom[0]);  // Move the first item to the end
+                    carousel.classList.add('next');
+                } else {
+                    list.prepend(sliderItemsDom[sliderItemsDom.length - 1]);  // Move the last item to the start
+                    carousel.classList.add('prev');
+                }
+
+                // Clear the previous timeout and set a new one
+                clearTimeout(runTimeOut);
+                runTimeOut = setTimeout(() => {
+                    carousel.classList.remove('next');
+                    carousel.classList.remove('prev');
+                }, timeRunning);
+
+                // Clear the auto transition timeout and set a new one
+                clearTimeout(runNextAuto);
+                runNextAuto = setTimeout(() => {
+                    nextBtn.click();
+                }, timeAutoNext);
+
+                // Reset the animation for the time running bar
+                resetTimeAnimation();
+            }
+            // Click handlers for next and previous buttons
+            nextBtn.addEventListener('click', () => showSlider('next'));
+            prevBtn.addEventListener('click', () => showSlider('prev'));
+
+            // Start the initial animation for the time running bar
+            resetTimeAnimation();
+        </script>
+        <!-- JQUERY START -->
+        <script src="jquery-3.7.1.js"></script>
+        <script>
+            // FOR CSS
+            $(document).ready(function () {
+                $(".color1").click(function () {
+                    $(".abc").css("background-color", "pink")
+                })
+                $(".color2").click(function () {
+                    $(".abc").css("background-color", "green")
+                })
+                $(".color3").click(function () {
+                    $(".abc").css("background-color", "cadetblue")
+                })
+                $(".color4").click(function () {
+                    $(".abc").css("background-color", "red")
+                })
+                $(".color5").click(function () {
+                    $(".abc").css("background-color", "blue")
+                })
+                $(".color6").click(function () {
+                    $(".abc").css("background-color", "yellow")
+                })
+            })
+            // for effects
+            $("document").ready(function () {
+                $("#tray button").hide();
+                // Open the tray when the circle button is clicked
+                $("#circle").click(function () {
+                    $("#circle").fadeOut(200);
+                    $("#tray").fadeIn(200).animate({ width: "210px" }, 300, function () {
+                        $("#tray button").fadeIn(200)
+                    });
+                    $("#closetray").fadeIn(200);
+                })
+                // Close the tray when the close button is clicked
+                $("#closetray").click(function () {
+                    $("#tray button").fadeOut(100);
+                    $("#tray button").fadeOut(100)
+
+                    $("#tray").animate({ width: "0px" }, 300, function () {
+                        $("#tray button").fadeOut(200);
+                        $("#circle").fadeIn(200);
+                        $("#closetray").fadeOut(400)
+                    })
+                })
+            })
+        </script>
+        <!-- JQUERY END -->
+
+</body>
+
+</html>

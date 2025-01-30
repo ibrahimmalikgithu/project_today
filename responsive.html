@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Hero Section</title>
+    <style>
+        /* Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Header Section */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #0b8000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            z-index: 1000;
+        }
+
+        .nav-1 {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-1 a {
+            color: #fff;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .nav-1 a:hover,
+        .nav-1 a.active {
+            background: #fff;
+            color: #0b8000;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            margin: 3px 0;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .nav-links {
+            display: flex;
+        }
+
+        .nav-links.responsive {
+            display: block;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            width: 100%;
+            background: #0b8000;
+            text-align: center;
+        }
+
+        .nav-links.responsive a {
+            display: block;
+            padding: 10px 0;
+        }
+
+        /* Hero Section */
+        .carousel {
+            width: 100%;
+            height: 100vh;
+            margin-top: 50px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .list {
+            display: flex;
+            transition: transform 1s ease;
+        }
+
+        .item {
+            min-width: 12%;
+
+            height: 30vh;
+            top: 80%;
+            margin-right: 50px;
+            transform: translateY(-70%);
+            left: 70%;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            background-size: cover;
+            /* background-position: center; */
+            background-position: 50% 50%;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            transition: 1s;
+        }
+
+        .carousel .list .item:nth-child(1),
+        .carousel .list .item:nth-child(2) {
+            top: 0;
+            left: 0;
+            transform: translate(0, 0);
+            border-radius: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .carousel .list .item:nth-child(3) {
+            left: 67%;
+        }
+
+        .carousel .list .item:nth-child(4) {
+            left: calc(67% + 200px);
+        }
+
+        .carousel .list .item:nth-child(5) {
+            left: calc(67% + 400px);
+        }
+
+        .carousel .list .item:nth-child(6) {
+            left: calc(67% + 600px);
+        }
+
+        .carousel .list .item:nth-child(n+7) {
+            left: calc(67% + 800px);
+            opacity: 0;
+        }
+
+        .list .item .content {
+            position: absolute;
+            top: 50%;
+            left: 100px;
+            transform: translateY(-50%);
+            width: 400px;
+            text-align: left;
+            color: #fff;
+            display: none;
+        }
+
+        .list .item:nth-child(2) .content {
+            display: block;
+        }
+
+        /* .content {
+            text-align: center;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        } */
+
+        .content .title {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: #0b8000;
+        }
+
+        .content .name {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .content .des {
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .content .btn {
+            margin-left: 5px;
+            opacity: 0;
+            animation: animate 1s ease-in-out 1.2s 1 forwards;
+        }
+
+        .content .btn button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            border-radius: 5px;
+            background: green;
+            color: #fff;
+        }
+
+        .content .btn button:nth-child(1) {
+            margin-right: 15px;
+            background: green;
+            color: white;
+            transition: 0.3s;
+            font-weight: bold;
+            font-size: 18px;
+            border-radius: 10px;
+        }
+
+        .content .btn button:nth-child(2) {
+            background: green;
+            color: white;
+            transition: 0.3s;
+            font-weight: bold;
+            font-size: 18px;
+            border-radius: 10px;
+        }
+
+        .content .btn button:nth-child(1):hover {
+            background-color: #0b8000;
+            color: #fff;
+            border-color: #0b8000;
+        }
+
+        .content .btn button:nth-child(2):hover {
+            background-color: #0b8000;
+            color: #fff;
+            border-color: #0b8000;
+        }
+
+        @keyframes animate {
+
+            from {
+                opacity: 0;
+                transform: translate(0, 100px);
+                filter: blur(33px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translate(0);
+                filter: blur(0);
+            }
+        }
+
+        /* Arrows */
+        .arrows {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .arrows {
+            position: absolute;
+            top: 80%;
+            right: 68%;
+            z-index: 100;
+            width: 300px;
+            max-width: 30%;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .arrows button {
+            overflow: hidden;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #0b8000;
+            color: #fff;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            font-family: monospace;
+            font-weight: bold;
+            transition: .5s;
+            cursor: pointer;
+        }
+
+        .arrows button:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        .carousel .timeRunning {
+            position: absolute;
+            z-index: 1000;
+            width: 0%;
+            height: 4px;
+            background-color: #0b8000;
+            left: 0;
+            top: 0;
+            animation: runningTime 7s linear 1 forwards;
+        }
+
+        @keyframes runningTime {
+
+            from {
+                width: 0%;
+            }
+
+            to {
+                width: 100%;
+            }
+
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+            }
+
+            .content .title {
+                font-size: 2rem;
+            }
+
+            .content .name {
+                font-size: 1.5rem;
+            }
+
+            .content .des {
+                font-size: 0.9rem;
+            }
+
+            .content .btn button {
+                font-size: 0.9rem;
+                padding: 8px 15px;
+            }
+        }
+
+        @media screen and (min-width: 340px) and (max-width: 700px) {
+            .list {
+                width: 50%;
+                /* Ensure it occupies the full width of the viewport */
+                overflow: hidden;
+                /* Prevent items from overflowing */
+            }
+
+            .item {
+                min-width: 100%;
+                /* Ensure items take full width in the viewport */
+                height: 30vh;
+                /* Adjust height for smaller screens */
+            }
+
+            .content {
+                margin-left: -50px;
+                margin-top: -100px;
+            }
+
+            .arrows {
+                width: 100%;
+                /* Arrows spread across the screen width */
+                justify-content: space-around;
+            }
+
+            .arrows button {
+                width: 40px;
+                height: 40px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="nav-links nav-1">
+            <a href="#" class="active">Home</a>
+            <a href="books.html">Books</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <a href="#">Gallery</a>
+            <a href="login.html">Login</a>
+            <a href="Signin.html">Sign In</a>
+        </nav>
+    </header>
+    <div class="carousel">
+        <div class="list">
+            <!-- Carousel Items -->
+            <div class="item" style="background-image: url('Images/Banner/banner1.jpg');">
+                <div class="content">
+                    <div class="title">EID-UL-ADHA</div>
+                    <div class="name">Islamic Festival</div>
+                    <div class="des">Eid al-Fitr is a significant Islamic festival that marks the end of Ramadan, the
+                        month of fasting. It is a day of joy, gratitude, and celebration with family and friends.</div>
+                    <div class="btn">
+                        <button>Learn More</button>
+                        <button>Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="item" style="background-image: url('Images/Banner/banner2.jpg');">
+                <div class="content">
+                    <div class="title">CHRISTMAS</div>
+                    <div class="name">Christian Festival</div>
+                    <div class="des">Christmas celebrates the birth of Jesus Christ and is a time for love, sharing, and
+                        spreading goodwill. It is marked by festive decorations, family gatherings, and exchanging
+                        gifts.</div>
+                    <div class="btn">
+                        <button>Learn More</button>
+                        <button>Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Festival 3: Vesak (Buddhism) -->
+            <div class="item" style="background-image: url('Images/Banner/banner3.jpg');">
+                <div class="content">
+                    <div class="title">VESAK</div>
+                    <div class="name">Buddhist Festival</div>
+                    <div class="des">Vesak celebrates the birth, enlightenment, and death of the Buddha. It is a time
+                        for Buddhists to reflect on the teachings of the Buddha and engage in acts of kindness and
+                        charity.</div>
+                    <div class="btn">
+                        <button>Learn More</button>
+                        <button>Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Festival 4: Diwali (Hinduism) -->
+            <div class="item" style="background-image: url('Images/Banner/banner4.jpeg');">
+                <div class="content">
+                    <div class="title">DIWALI</div>
+                    <div class="name">Hindu Festival</div>
+                    <div class="des">Diwali, also known as the Festival of Lights, is celebrated by Hindus to mark the
+                        victory of light over darkness and good over evil. It involves lighting lamps, feasting, and
+                        spending time with family.</div>
+                    <div class="btn">
+                        <button>Learn More</button>
+                        <button>Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more items here -->
+        </div>
+        <div class="arrows">
+            <button class="prev">&lt;</button>
+            <button class="next">&gt;</button>
+        </div>
+        <div class="timeRunning"></div>
+    </div>
+    <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('responsive');
+        });
+
+        // Carousel Functionality
+        // Select elements once and reuse the references
+        const nextBtn = document.querySelector('.next'),
+            prevBtn = document.querySelector('.prev'),
+            carousel = document.querySelector('.carousel'),
+            list = document.querySelector('.list'),
+            items = document.querySelectorAll('.item'),
+            runningTime = document.querySelector('.carousel .timeRunning');
+
+        let timeRunning = 3000; // time per slide
+        let timeAutoNext = 7000; // time between auto transitions
+
+        let runTimeOut;  // Variable to store timeout for transition timing
+        let runNextAuto = setTimeout(() => nextBtn.click(), timeAutoNext);  // Auto slide timeout
+
+        // Function to reset the animation
+        function resetTimeAnimation() {
+            runningTime.style.animation = 'none';
+            runningTime.offsetHeight;  // Trigger reflow to reset animation
+            runningTime.style.animation = null;
+            runningTime.style.animation = 'runningTime 7s linear 1 forwards';
+        }
+
+        // Function to show slider transition
+        function showSlider(type) {
+            const sliderItemsDom = list.querySelectorAll('.carousel .list .item');
+
+            if (type === 'next') {
+                list.appendChild(sliderItemsDom[0]);  // Move the first item to the end
+                carousel.classList.add('next');
+            } else {
+                list.prepend(sliderItemsDom[sliderItemsDom.length - 1]);  // Move the last item to the start
+                carousel.classList.add('prev');
+            }
+
+            // Clear the previous timeout and set a new one
+            clearTimeout(runTimeOut);
+            runTimeOut = setTimeout(() => {
+                carousel.classList.remove('next');
+                carousel.classList.remove('prev');
+            }, timeRunning);
+
+            // Clear the auto transition timeout and set a new one
+            clearTimeout(runNextAuto);
+            runNextAuto = setTimeout(() => {
+                nextBtn.click();
+            }, timeAutoNext);
+
+            // Reset the animation for the time running bar
+            resetTimeAnimation();
+        }
+        // Click handlers for next and previous buttons
+        nextBtn.addEventListener('click', () => showSlider('next'));
+        prevBtn.addEventListener('click', () => showSlider('prev'));
+
+        // Start the initial animation for the time running bar
+        resetTimeAnimation();
+    </script>
+</body>
+
+</html>

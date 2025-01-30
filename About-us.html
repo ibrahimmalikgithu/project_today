@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>About Us - Festival Celebration</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        h1,
+        h2,
+        h4 {
+            font-weight: 600;
+            color: #0b8000;
+        }
+
+        .about-us {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 50px 30px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .about-us .about-content {
+            width: 50%;
+            padding-right: 20px;
+        }
+
+        .about-us .about-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .about-us .about-content p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .about-us .about-image {
+            width: 40%;
+        }
+
+        .about-us .about-image img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .festival-highlights {
+            background-color: #ecf0f1;
+            padding: 50px;
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .festivals {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .festival-card {
+            background: white;
+            padding: 20px;
+            width: 25%;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 2s forwards;
+        }
+
+        .festival-card h4 {
+            margin-bottom: 10px;
+        }
+
+        .festival-card {
+            text-align: center;
+        }
+
+        .festival-card p {
+            font-size: 1rem;
+        }
+
+        .festival-card:hover {
+            transform: translateY(-10px);
+        }
+
+        #eid-card {
+            animation-delay: 0s;
+        }
+
+        #diwali-card {
+            animation-delay: 0.5s;
+        }
+
+        #christmas-card {
+            animation-delay: 1s;
+        }
+
+        .testamonials {
+            border: #0b8000 5px solid;
+            border-radius: 200px;
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="about-us">
+        <div class="about-content">
+            <h2>About Us</h2>
+            <p class="intro-text">
+                At <strong>Festival of Unity</strong>, we celebrate the rich diversity of the world's religious
+                festivals. From the joyous lights of Diwali to the serene prayers of Eid, we bring together people of
+                all faiths to honor, respect, and share their beautiful traditions.
+            </p>
+            <p>
+                Our mission is to promote peace and harmony through the celebration of religious festivals from all
+                cultures, encouraging understanding and respect among different communities.
+            </p>
+        </div>
+        <div class="about-image">
+            <img src="Images/about us.jfif" alt="Festivals">
+        </div>
+    </section>
+
+    <!-- Animated Festival Highlights Section -->
+    <section class="festival-highlights">
+        <div class="festivals">
+            <div class="festival-card" id="eid-card">
+                <img src="Images/testimonials3.jfif" height="100" width="100" class="testamonials">
+                <h4>Syed Haziq Ahmed</h4>
+                <p class="festival-description">
+                    Hi, I'm <strong>Syed Haziq Ahmed</strong>, a front-end developer specializing in modern web
+                    technologies
+                    and frameworks.
+                </p>
+            </div>
+            <div class="festival-card" id="diwali-card">
+                <img src="Images/testimonials.jpg" height="100" width="100" class="testamonials">
+                <h4>Taimoor Ali</h4>
+                <p class="festival-description"> Hi, I'm <strong>Taimoor Ali</strong>, a front-end developer
+                    specializing
+                    in modern web technologies and frameworks.
+                </p>
+            </div>
+            <div class="festival-card" id="christmas-card">
+                <img src="Images/testimonilas2.jfif" height="100" width="100" class="testamonials">
+                <h4>Ibrahim Malik</h4>
+                <p class="festival-description"> Hi, I'm <strong>Ibrahim Malik</strong>, a front-end developer
+                    specializing
+                    in modern web technologies and frameworks.
+                </p>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
